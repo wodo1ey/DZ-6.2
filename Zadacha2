@@ -1,0 +1,29 @@
+# Юлий Цезарь использовал свой способ шифрования текста. Каждая буква заменялась на следующую по алфавиту через K позиций по кругу. Если взять русский алфавит и k = 3, 
+# то в слове, которое мы хотим зашифровать, буква А станет буквой Г, Б станет Д и так далее.
+В текстовом файле хранится сообщение (первая строка), а также значение сдвига (вторая строка). Напишите программу, которая зашифрует это сообщение при помощи шифра 
+# Цезаря и выведет результат в другой текстовый файл. Сдвиг может быть только положительным значением. Букву Ё не учитывать. 
+
+
+
+lowercase = "абвгдежзийклмнопрстуфхцчшщъыьэюя"
+uppercase = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+file1 = open("C:/test/in.txt", "r", encoding="UTF-8")
+file2 = open("C:/test/out.txt", "w", encoding="UTF-8")
+l = file1.readlines()
+x = int(l[1])
+s = str(l[0])
+m = str
+for i in range(len(s)):
+    if s[i] in lowercase:
+        if lowercase.find(s[i]) + x < len(lowercase):
+            Number = lowercase.find(s[i]) + x
+        else: Number = lowercase.find(s[i]) + x - len(lowercase)
+        file2.write(lowercase[Number])
+    elif s[i] in uppercase:
+        if uppercase.find(s[i]) + x < len(uppercase):
+            Number = uppercase.find(s[i]) + x
+        else: Number = uppercase.find(s[i]) + x - len(uppercase)
+        file2.write(uppercase[Number])
+    else:
+        file2.write(s[i])
+print(s)
