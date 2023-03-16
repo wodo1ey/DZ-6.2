@@ -1,0 +1,37 @@
+# Пользователь вводит строку. Напишите программу, которая определяет, является ли заданная строка правильным IP-адресом. Обеспечьте контроль ввода, 
+# где предусматривается ввод целых чисел от 0 до 255, а также точки между ними.
+
+def isInt(str):
+    try:
+        int(str)
+        return True
+    except ValueError:
+        return False
+
+
+y = 0
+ip = str(input())
+ip.split(".")
+if ip.count(".") < 3 or ip.count(".") > 4:
+    print("IP-адрес - четыре числа, разделённые точками.")
+else:
+    x = 0;
+    list1 = list(ip.split("."))
+    for i in range(4):
+        if isInt(list1[i]) == True:
+            x += 1
+        else:
+            print(list1[i], "- не целое число")
+    if x == 4:
+        list2 = list(map(int, ip.split(".")))
+        for i in range(4):
+            if list2[i] > 255:
+                print(list2[i], "превышает 255")
+                break
+            elif list2[i] < 0:
+                print(list2[i], "меньше 0")
+                break
+            else:
+                y += 1
+if y == 4:
+    print("IP-адрес корректен")
